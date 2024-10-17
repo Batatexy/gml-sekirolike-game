@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"Grass14",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.464104,
+  "name":"Grass14",
+  "parent":{
+    "name":"Steps",
+    "path":"folders/Sons/Steps.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Grass14.wav",
+  "type":0,
+  "volume":1.0,
+}

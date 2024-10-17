@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Deflects",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Deflects",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Scripts/Sounds.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

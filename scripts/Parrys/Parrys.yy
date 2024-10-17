@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Parrys",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Parrys",
+  "parent":{
+    "name":"Sounds",
+    "path":"folders/Scripts/Sounds.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

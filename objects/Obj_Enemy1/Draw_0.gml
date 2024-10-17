@@ -1,0 +1,12 @@
+event_inherited();
+
+var varX = -12
+var varY = -38
+
+//Barra de Vida
+draw_set_alpha(0.75)
+draw_rectangle_colour(x + 1 + varX, y + 1 + varY, x + lifeValue / 5 + varX, y + 3 + varY, 100, 100, 100, 100, false);
+
+draw_set_alpha(1)
+draw_rectangle_colour(x + 1 + varX, y + 1 + varY, x + life / 5 + varX, y + 3 + varY, c_red, c_red, c_red, c_red, false);
+
