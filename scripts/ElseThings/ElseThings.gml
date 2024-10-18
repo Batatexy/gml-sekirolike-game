@@ -16,6 +16,11 @@ function ElseThings()
 	image_speed = 1
 	heal = 0
 	
+	disableCommands()
+}
+
+function disableCommands()
+{
 	space = false
 	right = false
 	left = false
@@ -24,5 +29,4 @@ function ElseThings()
 	buttonHeal = false
 	buttonHook = false
 	buttonDash = false
-	
 }

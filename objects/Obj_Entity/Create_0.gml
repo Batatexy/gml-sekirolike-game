@@ -30,9 +30,10 @@ buttonDash = false
 
 //Inimigos:
 	//Inimigo mais proximo e a direção desse inimigo
-	nearestEnemyDirection = 0
-	nearestEnemy = 0
-
+	nearestEnemyDirection = false
+	nearestEnemy = false
+	imageXscale = 1
+	
 //Movimentação:
 	//Direção de Movimento
 	moveDirection = 1

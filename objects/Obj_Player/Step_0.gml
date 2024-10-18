@@ -9,20 +9,21 @@ buttonHeal = keyboard_check_pressed(ord("E"))
 buttonDash = keyboard_check_pressed(vk_shift)
 buttonHook = keyboard_check_pressed(ord("F"))
 
-//Definir quem é o inimigo mais próximo
-if instance_exists(Obj_Enemy1)
-{
-	nearestEnemy = instance_nearest(x,y,Obj_Enemy1)
-}
-else
-{
-	nearestEnemy = false
-	nearestEnemyDirection = false
-}
-
 if global.pause = 0
 {
-	//Sons de 
+	//Inimigos:
+	enemys = [instance_nearest(x,y,Obj_Arrow), instance_nearest(x,y,Obj_Enemy1), instance_nearest(x,y,Obj_Enemy2)]
+
+	//Verificar entre todos os inimigos proximos, quem é o MAIS PROXIMO
+	for (var i = 1; i < array_length(enemys); i ++)
+	{
+		if distance_to_object(enemys[i-1]) < distance_to_object(enemys[i])
+		{
+			nearestEnemy = enemys[i-1]
+		}
+	}
+
+	//Sons de passo
 	if horizontalSpeed != 0 and verticalSpeed=0
 	{
 		stepTimer--

@@ -1,7 +1,5 @@
 event_inherited();
 
-nearestEnemy = Obj_Player
-
 lastAttckType = 1
 attackType = 1
 

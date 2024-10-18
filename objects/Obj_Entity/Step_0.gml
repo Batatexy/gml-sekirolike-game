@@ -1,8 +1,9 @@
-if global.pause = 0
-{
+if global.pause = 0{
 
 x += horizontalSpeed
 y += verticalSpeed
+
+imageXscale = image_xscale
 
 RGBChange()
 
@@ -52,7 +53,7 @@ if life >= lifeValue
 //Definir a direção que o inimigo está olhando
 if instance_exists(nearestEnemy)
 {
-	nearestEnemyDirection = nearestEnemy.image_xscale
+	nearestEnemyDirection = nearestEnemy.imageXscale
 }
 else
 {
@@ -182,25 +183,62 @@ if life > 0
 	//Para o Player os inimigos são Inimigos1 por exemplo, para os inimigos o inimigo é o Player
 	if instance_exists(Obj_Enemy1)
 	{
-		if nearestEnemy.sprite_index != Spr_Enemy1_Deflect and
-		//Enemy1
-		(nearestEnemy.sprite_index = Spr_Enemy1_Attack1 and nearestEnemy.image_index > 3) or
-		(nearestEnemy.sprite_index = Spr_Enemy1_Attack2 and nearestEnemy.image_index > 3) or
-		(nearestEnemy.sprite_index = Spr_Enemy1_Attack3 and nearestEnemy.image_index > 3) or
-		(nearestEnemy.sprite_index = Spr_Enemy1_Attack4 and nearestEnemy.image_index > 7 and nearestEnemy.image_index < 10) or
-
-		//Player
-		(nearestEnemy.sprite_index = Spr_Player_Attack1 and nearestEnemy.image_index > 0) or
-		(nearestEnemy.sprite_index = Spr_Player_Attack2 and nearestEnemy.image_index > 0)
+		if nearestEnemy = instance_nearest(x,y,Obj_Enemy1)
+		{
+			if nearestEnemy.sprite_index != Spr_Enemy1_Deflect and
+			//Enemy1
+			(nearestEnemy.sprite_index = Spr_Enemy1_Attack1 and nearestEnemy.image_index > 3) or
+			(nearestEnemy.sprite_index = Spr_Enemy1_Attack2 and nearestEnemy.image_index > 3) or
+			(nearestEnemy.sprite_index = Spr_Enemy1_Attack3 and nearestEnemy.image_index > 3) or
+			(nearestEnemy.sprite_index = Spr_Enemy1_Attack4 and nearestEnemy.image_index > 7 and nearestEnemy.image_index < 10)
+			{
+				tackingHitFunction()
+			}
+			
+		}
+	}
+	else
+	{
+		if dash = 0 and grapplingHook = 0
+		{
+			forceMove = 0
+		}
+	}
+	
+	//Flechas
+	if instance_exists(Obj_Arrow)
+	{
+		if nearestEnemy = instance_nearest(x,y,Obj_Arrow)
 		{
 			tackingHitFunction()
 		}
-		else
+	}
+	else
+	{
+		if dash = 0 and grapplingHook = 0
 		{
-			if dash = 0 and grapplingHook = 0
+			forceMove = 0
+		}
+	}
+	
+	//Player
+	if instance_exists(Obj_Player)
+	{
+		if	nearestEnemy = Obj_Player
+		{
+			if nearestEnemy.sprite_index != Spr_Player_Deflect and
+			(nearestEnemy.sprite_index = Spr_Player_Attack1 and nearestEnemy.image_index > 0) or
+			(nearestEnemy.sprite_index = Spr_Player_Attack2 and nearestEnemy.image_index > 0)
 			{
-				forceMove = 0
+				tackingHitFunction()
 			}
+		}
+	}
+	else
+	{
+		if dash = 0 and grapplingHook = 0
+		{
+			forceMove = 0
 		}
 	}
 	
@@ -616,6 +654,16 @@ if life > 0
 					}
 					break
 				}
+				
+				case Obj_Enemy2:
+				{
+					if sprite_index != Spr_Enemy1_Crouch
+					{
+						sprite_index = Spr_Enemy1_Crouch
+						image_index = 0
+					}
+					break
+				}
 			}
 			
 			if image_index >= image_number - 1
@@ -685,6 +733,24 @@ else
 				}
 				break
 			}
+			
+			case Obj_Enemy2:
+			{
+				if sprite_index != Spr_Enemy1_Die
+				{
+					Deaths()
+					sprite_index = Spr_Enemy1_Die
+				}
+				
+				lifeValue -= 1.25
+				staminaValue -=1.25
+								
+				if lifeValue <= 0
+				{
+					instance_destroy()
+				}
+				break
+			}
 		}
 		
 		if image_index > image_number - 1
@@ -696,6 +762,7 @@ else
 }
 
 }
+//if global.pause = 1
 else
 {
 	image_speed = 0

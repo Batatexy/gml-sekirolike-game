@@ -50,13 +50,20 @@ function tackingHitFunction()
 					//Ataques comuns
 					else
 					{
+						var arrowAdd
+						//Se for uma flecha
+						if nearestEnemy = instance_nearest(x,y,Obj_Arrow)
+						{
+							arrowAdd = 0.6
+						}
+						
 						if nearestEnemyDirection = 1
 						{
-							forceMove = 0.1
+							forceMove = 0.1 + arrowAdd
 						}
 						else if nearestEnemyDirection = -1
 						{
-							forceMove = -0.1
+							forceMove = -0.1 - arrowAdd
 						}
 					}
 				}

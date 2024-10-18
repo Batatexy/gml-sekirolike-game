@@ -1,5 +1,7 @@
 event_inherited();
 
+draw_text(x-70,y,nearestEnemy)
+
 //Barra de Vida e Stamina
 draw_set_alpha(0.75)
 draw_rectangle_colour(global.finalCamX + 1, global.finalCamY + 1, global.finalCamX + lifeValue / 1.5, global.finalCamY + 5, 100, 100, 100, 100, false);
@@ -25,6 +27,4 @@ if grapplingHook = 1
 		draw_line_width_color(x+6,y-15,nearestGrapplingHook.x,nearestGrapplingHook.y, 1, global.c_brown, global.c_brown)
 	}
 }
-
-
 
